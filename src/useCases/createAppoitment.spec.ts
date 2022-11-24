@@ -1,3 +1,4 @@
+import { InMemoryAppointmenteRepository } from './../repositories/in-memory/in-memory-appointment';
 import { Appointment } from './../entities/appointment';
 import { expect, it } from 'vitest'
 import { CreateAppointment } from './createAppointment';
@@ -5,7 +6,9 @@ import { CreateAppointment } from './createAppointment';
 
 it('should be able to create useCase', () =>{
 
-    const createAppointment = new CreateAppointment()
+    
+    const appointmentRepository = new InMemoryAppointmenteRepository()
+    const createAppointment = new CreateAppointment(appointmentRepository)
 
     const startsAt = new Date();
     const endsAt = new Date();
